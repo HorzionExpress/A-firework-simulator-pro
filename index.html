@@ -406,6 +406,228 @@
     background: linear-gradient(180deg, rgba(100, 65, 20, 0.95), rgba(55, 35, 10, 0.95));
   }
 
+  /* ==================== 新手引导 ==================== */
+  .guide-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: none;
+  }
+
+  .guide-overlay.show {
+    display: block;
+  }
+
+  .guide-spot {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-radius: 14px;
+    pointer-events: none;
+    box-shadow:
+      0 0 0 9999px rgba(2, 4, 12, 0.82),
+      0 0 0 2px rgba(255, 209, 102, 0.88),
+      0 0 30px 6px rgba(255, 200, 80, 0.24);
+  }
+
+  .guide-tip {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 360px;
+    max-width: calc(100vw - 28px);
+    padding: 14px 16px 13px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #182046, #0b1024);
+    border: 1px solid rgba(255, 209, 102, 0.45);
+    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.78),
+                0 0 0 1px rgba(90, 123, 240, 0.16);
+    color: #e6ebff;
+    font-family: inherit;
+    z-index: 2;
+  }
+
+  .guide-tip-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .guide-step-icon {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #2b3a7a, #1a2148);
+    border: 1px solid rgba(120, 150, 255, 0.35);
+  }
+
+  .guide-step-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .guide-step-label {
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    color: #7f8ac4;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .guide-step-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #ffe0a0;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+
+  .guide-close {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    border: 1px solid #2a3358;
+    background: #161c38;
+    color: #9aa4d8;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .guide-close:hover {
+    background: #1e2648;
+    border-color: #3d4a80;
+    color: #ffffff;
+  }
+
+  .guide-text {
+    font-size: 13px;
+    line-height: 1.78;
+    color: #c6d0f5;
+  }
+
+  .guide-text b {
+    color: #ffd166;
+    font-weight: 700;
+  }
+
+  .guide-note {
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 10px;
+    background: rgba(60, 200, 120, 0.10);
+    border: 1px solid rgba(90, 220, 140, 0.32);
+    color: #a8ffd8;
+    font-size: 12px;
+    line-height: 1.72;
+  }
+
+  .guide-note b {
+    color: #dcffec;
+    font-weight: 700;
+  }
+
+  .guide-dots {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 12px 0 10px;
+  }
+
+  .guide-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #2a3358;
+    transition: width 0.2s, background 0.2s;
+  }
+
+  .guide-dot.active {
+    width: 18px;
+    background: linear-gradient(90deg, #ffd166, #ff9f43);
+  }
+
+  .guide-actions {
+    display: flex;
+    gap: 7px;
+  }
+
+  .guide-btn {
+    flex: 1;
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid #2a3358;
+    background: #161c38;
+    color: #dfe5ff;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s, opacity 0.15s;
+  }
+
+  .guide-btn:hover {
+    background: #1e2648;
+    border-color: #3d4a80;
+  }
+
+  .guide-btn:active {
+    transform: scale(0.98);
+  }
+
+  .guide-btn.ghost {
+    flex: 0 0 auto;
+    min-width: 64px;
+    background: transparent;
+    border-color: #232a4d;
+    color: #8f99cc;
+  }
+
+  .guide-btn.ghost:hover {
+    background: #141a34;
+    color: #c3ccf5;
+  }
+
+  .guide-btn.primary {
+    background: linear-gradient(180deg, #d09b2a, #a8731a);
+    border-color: #ffd166;
+    color: #23180a;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .guide-btn.primary:hover {
+    background: linear-gradient(180deg, #e8b03a, #bd8420);
+  }
+
+  .guide-btn.disabled,
+  .guide-btn:disabled {
+    opacity: 0.32;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .guide-btn.disabled:hover,
+  .guide-btn:disabled:hover {
+    background: #161c38;
+    border-color: #2a3358;
+  }
+
   /* ==================== 控制台 ==================== */
   #panel {
     flex: 0 0 396px;
@@ -1108,6 +1330,18 @@
     border-color: #28a068;
   }
 
+  .btn.help {
+    border-color: #3a3560;
+    color: #d9ccff;
+    background: #1a1630;
+  }
+
+  .btn.help:hover {
+    background: #251f45;
+    border-color: #5b4f9a;
+    color: #ffffff;
+  }
+
   /* 设置 */
   .settings-grid {
     display: grid;
@@ -1270,6 +1504,14 @@
     .bill { max-height: 160px; }
     .business-balance-num { font-size: 24px; }
     #bizChart { height: 70px; }
+
+    .guide-tip {
+      width: 320px;
+      padding: 12px 14px 11px;
+    }
+    .guide-step-title { font-size: 14.5px; }
+    .guide-text { font-size: 12.5px; }
+    .guide-note { font-size: 11.5px; }
   }
 
   @media (max-width: 480px) {
@@ -1330,7 +1572,7 @@
       <div class="card-title">经营状态</div>
 
       <div class="business-balance">
-        <div class="business-balance-label">当前资金</div>
+        <div class="business-balance-label">当前资金（模拟）</div>
         <div class="business-balance-num" id="bizBalance">¥10,000</div>
       </div>
 
@@ -1402,6 +1644,7 @@
     <div class="card">
       <div class="card-title">操作台</div>
       <div class="btn-row">
+        <button class="btn help" id="guideBtn">🎓 新手指导</button>
         <button class="btn" id="pauseBtn">⏸ 暂停游戏</button>
         <button class="btn" id="autoBtn">🎇 自动燃放</button>
         <button class="btn warn" id="clearSceneBtn">🧹 清空场景</button>
@@ -1446,6 +1689,27 @@
     <div class="milestone-amount" id="msAmount"></div>
     <div class="milestone-reward" id="msReward"></div>
     <button class="milestone-close" id="msClose">太棒了！</button>
+  </div>
+</div>
+
+<div class="guide-overlay" id="guideOverlay">
+  <div class="guide-spot" id="guideSpot"></div>
+  <div class="guide-tip" id="guideTip">
+    <div class="guide-tip-head">
+      <span class="guide-step-icon" id="guideIcon">🎆</span>
+      <div class="guide-step-text">
+        <div class="guide-step-label" id="guideLabel">新手指导 · 1 / 9</div>
+        <div class="guide-step-title" id="guideTitle">欢迎</div>
+      </div>
+      <button class="guide-close" id="guideCloseBtn" type="button" aria-label="关闭引导">✕</button>
+    </div>
+    <div id="guideBody"></div>
+    <div class="guide-dots" id="guideDots"></div>
+    <div class="guide-actions">
+      <button class="guide-btn ghost" id="guideSkipBtn" type="button">跳过</button>
+      <button class="guide-btn" id="guidePrevBtn" type="button">上一步</button>
+      <button class="guide-btn primary" id="guideNextBtn" type="button">下一步</button>
+    </div>
   </div>
 </div>
 
@@ -6473,7 +6737,7 @@ function fireItem(item, x, y) {
     }
 
     if (business.balance < item.price) {
-      showToast("资金不足！当前余额 " + fmtMoney(business.balance) +
+      showToast("模拟资金不足！当前余额 " + fmtMoney(business.balance) +
                 "，需要 " + fmtMoney(item.price), 2200);
       return false;
     }
@@ -6524,10 +6788,11 @@ function fireItem(item, x, y) {
       schedule(700, function () {
         showConfirmDialog({
           icon: "💸",
-          title: "破产了",
-          msg: "你的资金已耗尽，无法继续经营。\n\n" +
-               "累计收入：" + fmtMoney(business.totalIncome) + "\n" +
-               "累计支出：" + fmtMoney(business.totalExpense) + "\n" +
+          title: "模拟破产了",
+          msg: "你的模拟资金已耗尽，无法继续经营。\n\n" +
+               "（放心，这只是游戏中的虚拟数字）\n\n" +
+               "累计模拟收入：" + fmtMoney(business.totalIncome) + "\n" +
+               "累计模拟支出：" + fmtMoney(business.totalExpense) + "\n" +
                "燃放次数：" + business.fireCount + " 次\n\n" +
                "是否重新开始经营？",
           okText: "重新开始",
@@ -6536,7 +6801,7 @@ function fireItem(item, x, y) {
           onConfirm: function (confirmed) {
             if (confirmed) {
               resetBusiness();
-              showToast("经营数据已重置，资金 ¥10,000", 1800, true);
+              showToast("经营数据已重置，模拟资金 ¥10,000", 1800, true);
             }
           }
         });
@@ -6641,8 +6906,8 @@ var msClose = document.getElementById("msClose");
 function showMilestoneDialog(milestone) {
   msIcon.textContent = milestone.icon;
   msName.textContent = milestone.name;
-  msAmount.innerHTML = "资金突破 <b>" + fmtMoney(milestone.amount) + "</b>";
-  msReward.textContent = "奖励 +" + fmtMoney(milestone.reward).slice(1);
+  msAmount.innerHTML = "模拟资金突破 <b>" + fmtMoney(milestone.amount) + "</b>";
+  msReward.textContent = "模拟奖励 +" + fmtMoney(milestone.reward).slice(1);
 
   milestoneOverlay.classList.add("show");
   spawnMilestoneParticles(milestone);
@@ -6879,6 +7144,7 @@ var autoBtn = document.getElementById("autoBtn");
 var clearSceneBtn = document.getElementById("clearSceneBtn");
 var resetBtn = document.getElementById("resetBtn");
 var restartBizBtn = document.getElementById("restartBizBtn");
+var guideBtn = document.getElementById("guideBtn");
 var hudScene = document.getElementById("hudScene");
 var hudSel = document.getElementById("hudSel");
 var hudMoney = document.getElementById("hudMoney");
@@ -7180,7 +7446,7 @@ function resetBusiness() {
   renderBusinessChart();
 }
 
-function setMode(mode) {
+function setMode(mode, silent) {
   var isBusiness = mode === "business";
   business.enabled = isBusiness;
 
@@ -7199,9 +7465,13 @@ function setMode(mode) {
     updateMilestoneUI();
     renderBadges();
     setTimeout(renderBusinessChart, 50);
-    showToast("已进入经营模式 · 初始资金 ¥10,000", 1800, true);
+    if (!silent) {
+      showToast("已进入经营模式 · 初始模拟资金 ¥10,000", 1800, true);
+    }
   } else {
-    showToast("已切换回自由模式", 1500);
+    if (!silent) {
+      showToast("已切换回自由模式", 1500);
+    }
   }
 
   updateAffordState();
@@ -7271,7 +7541,7 @@ resetBtn.addEventListener("click", function () {
   showConfirmDialog({
     icon: "🧾",
     title: "结算并清空账单",
-    msg: "本次烟花秀累计消费 " + fmtMoney(state.totalCost) +
+    msg: "本次烟花秀累计模拟消费 " + fmtMoney(state.totalCost) +
          "，共燃放 " + totalCount + " 发。\n\n" +
          "确认后将清空账单记录并移除场景中所有烟花。",
     okText: "确认结算",
@@ -7297,19 +7567,19 @@ restartBizBtn.addEventListener("click", function () {
   showConfirmDialog({
     icon: "🔄",
     title: "重置经营数据",
-    msg: "确定要重置经营数据吗？\n\n" +
-         "当前资金：" + fmtMoney(business.balance) + "\n" +
-         "累计收入：" + fmtMoney(business.totalIncome) + "\n" +
-         "累计支出：" + fmtMoney(business.totalExpense) + "\n" +
+    msg: "确定要重置经营数据吗？\n（这里的数据全部是虚拟的）\n\n" +
+         "当前模拟资金：" + fmtMoney(business.balance) + "\n" +
+         "累计模拟收入：" + fmtMoney(business.totalIncome) + "\n" +
+         "累计模拟支出：" + fmtMoney(business.totalExpense) + "\n" +
          "已达成里程碑：" + countAchieved + " / " + MILESTONES.length + "\n\n" +
-         "重置后资金将恢复到 ¥10,000。",
+         "重置后模拟资金将恢复到 ¥10,000。",
     okText: "确认重置",
     cancelText: "取消",
     okClass: "good",
     onConfirm: function (confirmed) {
       if (confirmed) {
         resetBusiness();
-        showToast("经营数据已重置 · 资金 ¥10,000", 1600, true);
+        showToast("经营数据已重置 · 模拟资金 ¥10,000", 1600, true);
       }
     }
   });
@@ -7353,6 +7623,7 @@ canvas.addEventListener("pointerdown", function (e) {
   if (state.paused) return;
   if (confirmOverlay.classList.contains("show")) return;
   if (milestoneOverlay.classList.contains("show")) return;
+  if (typeof guide !== "undefined" && guide && guide.active) return;
 
   var rect = canvas.getBoundingClientRect();
   var x = e.clientX - rect.left;
@@ -7363,6 +7634,29 @@ canvas.addEventListener("pointerdown", function (e) {
 canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); });
 
 window.addEventListener("keydown", function (e) {
+  /* 新手引导激活时优先处理键盘 */
+  if (typeof guide !== "undefined" && guide && guide.active) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      endGuide(false);
+      return;
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      guideNextBtn.click();
+      return;
+    }
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      guidePrevBtn.click();
+      return;
+    }
+    if (e.code === "Space") {
+      e.preventDefault();
+      return;
+    }
+  }
+
   if (e.code === "Space" &&
       !confirmOverlay.classList.contains("show") &&
       !milestoneOverlay.classList.contains("show")) {
@@ -7380,6 +7674,471 @@ window.addEventListener("keydown", function (e) {
     hideMilestoneDialog();
   }
 });
+
+/* ============================================================
+   新手引导系统
+   ============================================================ */
+var guideOverlay = document.getElementById("guideOverlay");
+var guideSpot = document.getElementById("guideSpot");
+var guideTip = document.getElementById("guideTip");
+var guideIcon = document.getElementById("guideIcon");
+var guideLabel = document.getElementById("guideLabel");
+var guideTitle = document.getElementById("guideTitle");
+var guideBody = document.getElementById("guideBody");
+var guideDots = document.getElementById("guideDots");
+var guideNextBtn = document.getElementById("guideNextBtn");
+var guidePrevBtn = document.getElementById("guidePrevBtn");
+var guideSkipBtn = document.getElementById("guideSkipBtn");
+var guideCloseBtn = document.getElementById("guideCloseBtn");
+
+var GUIDE_SEEN_KEY = "fireworkSim_guideSeen_v1";
+var GUIDE_GAP = 14;
+
+var guide = {
+  active: false,
+  index: 0,
+  steps: [],
+  raf: null,
+  tipSize: null,
+  switchedMode: false
+};
+
+/* 向上查找最近的 .card 容器 */
+function closestCard(el) {
+  var n = el;
+  while (n && n.nodeType === 1) {
+    if (n.classList && n.classList.contains("card")) return n;
+    n = n.parentNode;
+  }
+  return null;
+}
+
+function guideEl(id) {
+  return document.getElementById(id);
+}
+
+/* 引导步骤定义（每次打开时重新构建，保证拿到最新 DOM） */
+function getGuideSteps() {
+  return [
+    {
+      icon: "🎆",
+      title: "欢迎来到烟花模拟器",
+      body: "这是一个可以随意燃放的<b>烟花模拟器</b>，从仙女棒到礼花弹，从无人机编队到大型焰火秀，应有尽有。",
+      note: "本页面是<b>纯模拟程序</b>：不会消耗你的任何真实金钱，不需要登录，也不会发起任何支付或扣款。请放心随便点。",
+      target: null
+    },
+    {
+      icon: "👆",
+      title: "点击画面即可燃放",
+      body: "在左侧画面（手机上为上方）<b>点击或触摸</b>任意位置，就会燃放当前选中的烟花。烟花的绽放位置会跟着你的手指走。",
+      note: "按 <b>空格键</b> 可以随时暂停 / 继续整个场景。",
+      target: function () { return guideEl("hintBar"); },
+      place: "top",
+      pad: 6
+    },
+    {
+      icon: "🌃",
+      title: "切换夜景地图",
+      body: "这里可以切换<b>城市夜景</b>、<b>海港夜色</b>、<b>山村星空</b>三种背景。不同场景的天空颜色、地面高度都不一样，烟花升起的位置也会随之变化。",
+      target: function () { return guideEl("sceneBox"); },
+      place: "auto",
+      pad: 6
+    },
+    {
+      icon: "🎇",
+      title: "挑选烟花种类",
+      body: "点击分类标题可以展开列表，再点任意一款即可选中它。每款烟花都标注了<b>模拟市价</b>和大致燃放时长，越贵的通常越壮观。",
+      note: "这些价格只是模拟数字，用来还原现实中的市价感觉，<b>不会真的扣钱</b>。",
+      target: function () { return guideEl("catBox"); },
+      place: "auto",
+      pad: 6
+    },
+    {
+      icon: "🔀",
+      title: "自由模式 / 经营模式",
+      body: "<b>自由模式</b>：无限预算，想放多少放多少，纯粹欣赏烟花。<br><b>经营模式</b>：给你一笔虚拟资金，燃放要花模拟成本、结算看运气，是一套轻松的小游戏。",
+      note: "两种模式都只是画面上的数字变化，和真实钱包没有任何关系。",
+      target: function () { return document.querySelector(".mode-switch"); },
+      place: "auto",
+      pad: 6
+    },
+    {
+      icon: "💼",
+      title: "经营模式：全部是虚拟资金",
+      body: "初始资金 ¥10,000 是<b>模拟货币</b>。燃放烟花会扣除模拟成本，随后按随机倍率结算模拟收入，可能赚、可能亏，余额归零会进入模拟破产状态。",
+      note: "💚 再强调一次：这里的每一分钱都是虚拟的。不会扣款、不会充值、不会绑定任何账号，破产了也只是重置一下数据而已。",
+      target: function () { return guideEl("businessCard"); },
+      place: "auto",
+      pad: 6
+    },
+    {
+      icon: "🎛️",
+      title: "操作台",
+      body: "暂停 / 继续、自动燃放、清空场景、结算账单都在这里。<b>自动燃放</b>会按照当前选中的烟花，随机向天空持续投放。",
+      note: "清空场景只会移除画面上的烟花，<b>不会产生任何费用</b>。",
+      target: function () {
+        var b = guideEl("pauseBtn");
+        return closestCard(b) || b;
+      },
+      place: "auto",
+      pad: 6
+    },
+    {
+      icon: "🧾",
+      title: "本次烟花秀账单",
+      body: "这里会实时统计你燃放了多少发、模拟花费是多少，方便你回看自己“烧”掉了多少模拟数字。",
+      note: "账单同样只是模拟记录，刷新页面后不会影响你的任何真实资产。",
+      target: function () { return guideEl("totalEl"); },
+      place: "auto",
+      pad: 10
+    },
+    {
+      icon: "🔊",
+      title: "音效与画质",
+      body: "可以随时开关音效（第一次需要点击一下页面才能激活浏览器音频），也可以在高清与流畅画质之间切换。",
+      note: "🎆 教程结束，去尽情放烟花吧！所有数字都只存在于屏幕上，你的钱包一分不少。",
+      target: function () { return guideEl("soundToggleBtn"); },
+      place: "auto",
+      pad: 10
+    }
+  ];
+}
+
+function rectOf(el) {
+  if (!el || typeof el.getBoundingClientRect !== "function") return null;
+  var r = el.getBoundingClientRect();
+  if (r.width <= 1 && r.height <= 1) return null;
+  var vh = window.innerHeight || document.documentElement.clientHeight || 600;
+  if (r.bottom < 0 || r.top > vh) return null;
+  return r;
+}
+
+function renderGuideDots() {
+  var html = "";
+  for (var i = 0; i < guide.steps.length; i++) {
+    html += '<span class="guide-dot' + (i === guide.index ? " active" : "") + '"></span>';
+  }
+  guideDots.innerHTML = html;
+}
+
+function updateGuideLayout() {
+  if (!guide.active) return;
+
+  var step = guide.steps[guide.index];
+  if (!step) return;
+
+  var vw = window.innerWidth || document.documentElement.clientWidth || 800;
+  var vh = window.innerHeight || document.documentElement.clientHeight || 600;
+
+  if (!guide.tipSize) {
+    guide.tipSize = {
+      w: guideTip.offsetWidth || 320,
+      h: guideTip.offsetHeight || 200
+    };
+  }
+
+  var tipW = guide.tipSize.w;
+  var tipH = guide.tipSize.h;
+
+  var el = null;
+  if (typeof step.target === "function") {
+    try { el = step.target(); } catch (err) { el = null; }
+  }
+
+  var r = rectOf(el);
+  var pad = typeof step.pad === "number" ? step.pad : 8;
+
+  var centerX = Math.round((vw - tipW) / 2);
+  var centerY = Math.round((vh - tipH) / 2);
+
+  if (!r) {
+    guideSpot.style.display = "none";
+    guideTip.style.left = clamp(centerX, 12, Math.max(12, vw - tipW - 12)) + "px";
+    guideTip.style.top = clamp(centerY, 12, Math.max(12, vh - tipH - 12)) + "px";
+    return;
+  }
+
+  var sx = r.left - pad;
+  var sy = r.top - pad;
+  var sw = r.width + pad * 2;
+  var sh = r.height + pad * 2;
+
+  if (sw >= vw * 0.94 && sh >= vh * 0.94) {
+    guideSpot.style.display = "none";
+    guideTip.style.left = clamp(centerX, 12, Math.max(12, vw - tipW - 12)) + "px";
+    guideTip.style.top = clamp(centerY, 12, Math.max(12, vh - tipH - 12)) + "px";
+    return;
+  }
+
+  guideSpot.style.display = "block";
+  guideSpot.style.left = Math.round(sx) + "px";
+  guideSpot.style.top = Math.round(sy) + "px";
+  guideSpot.style.width = Math.round(sw) + "px";
+  guideSpot.style.height = Math.round(sh) + "px";
+
+  var spaceBelow = vh - (sy + sh);
+  var spaceAbove = sy;
+  var spaceRight = vw - (sx + sw);
+  var spaceLeft = sx;
+
+  var need = GUIDE_GAP + 10;
+  var fits = [];
+  if (spaceBelow >= tipH + need) fits.push({ k: "below", v: spaceBelow });
+  if (spaceAbove >= tipH + need) fits.push({ k: "above", v: spaceAbove });
+  if (spaceRight >= tipW + need) fits.push({ k: "right", v: spaceRight });
+  if (spaceLeft >= tipW + need) fits.push({ k: "left", v: spaceLeft });
+
+  var prefer = step.place || "auto";
+  var chosen = null;
+  var i;
+
+  if (prefer !== "auto") {
+    for (i = 0; i < fits.length; i++) {
+      if (fits[i].k === prefer) {
+        chosen = prefer;
+        break;
+      }
+    }
+  }
+
+  if (!chosen) {
+    if (fits.length > 0) {
+      fits.sort(function (a, b) { return b.v - a.v; });
+      chosen = fits[0].k;
+    } else {
+      chosen = "center";
+    }
+  }
+
+  var tx;
+  var ty;
+
+  switch (chosen) {
+    case "below":
+      tx = sx + sw / 2 - tipW / 2;
+      ty = sy + sh + GUIDE_GAP;
+      break;
+    case "above":
+      tx = sx + sw / 2 - tipW / 2;
+      ty = sy - tipH - GUIDE_GAP;
+      break;
+    case "right":
+      tx = sx + sw + GUIDE_GAP;
+      ty = sy + sh / 2 - tipH / 2;
+      break;
+    case "left":
+      tx = sx - tipW - GUIDE_GAP;
+      ty = sy + sh / 2 - tipH / 2;
+      break;
+    default:
+      tx = (vw - tipW) / 2;
+      ty = (vh - tipH) / 2;
+      break;
+  }
+
+  tx = clamp(tx, 12, Math.max(12, vw - tipW - 12));
+  ty = clamp(ty, 12, Math.max(12, vh - tipH - 12));
+
+  guideTip.style.left = Math.round(tx) + "px";
+  guideTip.style.top = Math.round(ty) + "px";
+}
+
+function guideLoop() {
+  if (!guide.active) {
+    guide.raf = null;
+    return;
+  }
+  updateGuideLayout();
+  guide.raf = requestAnimationFrame(guideLoop);
+}
+
+function renderGuideStep() {
+  var step = guide.steps[guide.index];
+  if (!step) return;
+
+  guideIcon.textContent = step.icon || "💡";
+  guideLabel.textContent = "新手指导 · " + (guide.index + 1) + " / " + guide.steps.length;
+  guideTitle.textContent = step.title || "";
+
+  var html = "";
+  if (step.body) {
+    html += '<div class="guide-text">' + step.body + "</div>";
+  }
+  if (step.note) {
+    html += '<div class="guide-note">' + step.note + "</div>";
+  }
+  guideBody.innerHTML = html;
+
+  var isFirst = guide.index === 0;
+  var isLast = guide.index === guide.steps.length - 1;
+
+  guidePrevBtn.disabled = isFirst;
+  guidePrevBtn.classList.toggle("disabled", isFirst);
+  guidePrevBtn.style.visibility = isFirst ? "hidden" : "visible";
+
+  guideNextBtn.textContent = isLast ? "开始燃放 🎆" : "下一步";
+  guideSkipBtn.textContent = isLast ? "关闭" : "跳过";
+
+  renderGuideDots();
+
+  guide.tipSize = null;
+  updateGuideLayout();
+}
+
+function scrollGuideTargetIntoView() {
+  var step = guide.steps[guide.index];
+  if (!step || typeof step.target !== "function") return;
+
+  var el = null;
+  try { el = step.target(); } catch (err) { el = null; }
+  if (!el || typeof el.scrollIntoView !== "function") return;
+
+  var panelEl = document.getElementById("panel");
+  if (panelEl && panelEl.contains(el)) {
+    try {
+      el.scrollIntoView({ block: "center", inline: "nearest" });
+    } catch (err) {
+      el.scrollIntoView();
+    }
+  } else {
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight || 600;
+    if (rect.top < 0 || rect.bottom > vh) {
+      try {
+        el.scrollIntoView({ block: "center", inline: "nearest" });
+      } catch (err) {
+        el.scrollIntoView();
+      }
+    }
+  }
+}
+
+function goToGuideStep(idx) {
+  if (!guide.active) return;
+
+  if (idx < 0) idx = 0;
+  if (idx >= guide.steps.length) {
+    endGuide(true);
+    return;
+  }
+
+  guide.index = idx;
+  renderGuideStep();
+  scrollGuideTargetIntoView();
+  guide.tipSize = null;
+  updateGuideLayout();
+}
+
+function startGuide(isAuto) {
+  if (guide.active) return;
+
+  guide.steps = getGuideSteps();
+  guide.index = 0;
+  guide.switchedMode = false;
+  guide.tipSize = null;
+
+  /* 经营模式相关的讲解需要经营卡片可见 */
+  if (!business.enabled) {
+    setMode("business", true);
+    guide.switchedMode = true;
+  }
+
+  /* 面板滚回顶部，保证第一步定位准确 */
+  var panelEl = document.getElementById("panel");
+  if (panelEl) panelEl.scrollTop = 0;
+
+  guide.active = true;
+  guideOverlay.classList.add("show");
+  guideSpot.style.display = "none";
+
+  renderGuideStep();
+
+  if (guide.raf === null) {
+    guide.raf = requestAnimationFrame(guideLoop);
+  }
+
+  if (!isAuto) {
+    /* 用户主动打开，不做额外提示 */
+  }
+}
+
+function endGuide(completed) {
+  if (!guide.active) return;
+
+  guide.active = false;
+  guideOverlay.classList.remove("show");
+  guideSpot.style.display = "none";
+
+  if (guide.raf !== null) {
+    cancelAnimationFrame(guide.raf);
+    guide.raf = null;
+  }
+
+  /* 如果是引导过程中自动切到经营模式，结束时还原 */
+  if (guide.switchedMode) {
+    guide.switchedMode = false;
+    setMode("free", true);
+  }
+
+  try {
+    localStorage.setItem(GUIDE_SEEN_KEY, "1");
+  } catch (e) {
+    /* 隐私模式下可能不可用，忽略即可 */
+  }
+
+  if (completed) {
+    showToast("新手指导结束 · 尽情放烟花吧 🎆", 2000, true);
+  }
+}
+
+guideNextBtn.addEventListener("click", function () {
+  audioEngine.init();
+  audioEngine.resume();
+
+  if (!guide.active) return;
+
+  if (guide.index >= guide.steps.length - 1) {
+    endGuide(true);
+  } else {
+    goToGuideStep(guide.index + 1);
+  }
+});
+
+guidePrevBtn.addEventListener("click", function () {
+  if (!guide.active) return;
+  if (guide.index <= 0) return;
+  goToGuideStep(guide.index - 1);
+});
+
+guideSkipBtn.addEventListener("click", function () {
+  endGuide(false);
+});
+
+guideCloseBtn.addEventListener("click", function () {
+  endGuide(false);
+});
+
+/* 引导激活时，窗口尺寸变化后重新测量提示框 */
+window.addEventListener("resize", function () {
+  if (!guide.active) return;
+  guide.tipSize = null;
+});
+
+window.addEventListener("orientationchange", function () {
+  if (!guide.active) return;
+  setTimeout(function () {
+    guide.tipSize = null;
+    updateGuideLayout();
+  }, 220);
+});
+
+if (guideBtn) {
+  guideBtn.addEventListener("click", function () {
+    audioEngine.init();
+    audioEngine.resume();
+    startGuide(false);
+  });
+}
 
 /* ============================================================
    启动
@@ -7416,6 +8175,20 @@ function boot() {
 
   /* 启动主循环 */
   requestAnimationFrame(loop);
+
+  /* 首次访问自动弹出新手指导 */
+  var guideSeen = false;
+  try {
+    guideSeen = localStorage.getItem(GUIDE_SEEN_KEY) === "1";
+  } catch (e) {
+    guideSeen = false;
+  }
+
+  if (!guideSeen) {
+    setTimeout(function () {
+      startGuide(true);
+    }, 450);
+  }
 }
 
 boot();
