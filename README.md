@@ -1,5 +1,7 @@
 # A-firework-simulator-pro
 
+I would like to commit this game only works on your computer!
+
 Hey there! 👋 Welcome back — this is my second game project, and honestly? It's way more chill than my first one. No stress, no enemies, just pretty lights.
 
 language：chinese You can use your ‌Web Page Translation Feature to switch the language you are familar.
