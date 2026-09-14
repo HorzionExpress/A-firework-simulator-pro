@@ -31,6 +31,117 @@
     overflow: hidden;
   }
 
+  /* ==================== 开场动画 ==================== */
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    overflow: hidden;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .intro-inner {
+    text-align: center;
+    padding: 0 18px;
+    will-change: opacity, transform, filter;
+    animation: introFade 5s cubic-bezier(0.33, 0.0, 0.30, 1.0) forwards;
+  }
+
+  /* 0.00s 开始淡入 → 1.75s 完全显示 → 3.90s 开始淡出 → 5.00s 完全消失
+     淡入阶段（0% → 35%）被明显拉长，让品牌字样更舒缓地浮现 */
+  @keyframes introFade {
+    0% {
+      opacity: 0;
+      transform: translateY(34px) scale(0.92);
+      filter: blur(16px);
+    }
+    12% {
+      opacity: 0.28;
+      transform: translateY(24px) scale(0.945);
+      filter: blur(11px);
+    }
+    35% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    78% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-16px) scale(1.035);
+      filter: blur(7px);
+    }
+  }
+
+  .intro-by {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Microsoft YaHei", sans-serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(10px, 2.7vw, 15px);
+    letter-spacing: 0.40em;
+    text-indent: 0.40em;
+    color: #b9c6e6;
+    margin-bottom: clamp(10px, 2.4vw, 18px);
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.95),
+      0 0 18px rgba(120, 155, 225, 0.32);
+  }
+
+  .intro-name {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    font-family: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(28px, 8.4vw, 62px);
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+  }
+
+  /* Horizon —— #103F97 + 立体层叠阴影 */
+  .intro-horizon {
+    color: #103F97;
+    text-shadow:
+      0 0 2px rgba(150, 195, 255, 0.50),
+      0 0 16px rgba(45, 105, 205, 0.55),
+      1px 1px 0 #0c3172,
+      2px 2px 0 #0a2b63,
+      3px 3px 0 #082454,
+      4px 4px 0 #061d44,
+      5px 5px 0 #041634,
+      6px 6px 0 #030f24,
+      7px 9px 16px rgba(0, 0, 0, 0.90),
+      0 0 42px rgba(28, 82, 180, 0.45);
+  }
+
+  /* Studio —— #E14A77 + 立体层叠阴影 */
+  .intro-studio {
+    color: #E14A77;
+    margin-left: 0.26em;
+    text-shadow:
+      0 0 2px rgba(255, 200, 222, 0.50),
+      0 0 16px rgba(225, 74, 119, 0.55),
+      1px 1px 0 #bd3260,
+      2px 2px 0 #a52a53,
+      3px 3px 0 #8b2246,
+      4px 4px 0 #721a39,
+      5px 5px 0 #59132c,
+      6px 6px 0 #420d20,
+      7px 9px 16px rgba(0, 0, 0, 0.90),
+      0 0 42px rgba(200, 55, 105, 0.45);
+  }
+
   /* ==================== 舞台 ==================== */
   #stage {
     position: relative;
@@ -1478,6 +1589,121 @@
     padding: 12px 0;
   }
 
+  /* ==================== 联系作者 ==================== */
+  .contact-card {
+    border-color: rgba(93, 123, 245, 0.26);
+    background: linear-gradient(180deg, #0c1226, #0a0f1f);
+  }
+
+  .contact-card .card-title::before {
+    background: linear-gradient(180deg, #7c9bff, #e14a77);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 11px 12px;
+    border-radius: 11px;
+    border: 1px solid #232a4d;
+    background: #10152c;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.16s, border-color 0.16s, transform 0.1s, box-shadow 0.16s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 3;
+    touch-action: manipulation;
+  }
+
+  .contact-link:hover {
+    background: linear-gradient(90deg, #1a2350, #131a3a 75%);
+    border-color: #4b6bd6;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(60, 100, 240, 0.22);
+  }
+
+  .contact-link:active {
+    transform: scale(0.985);
+  }
+
+  .contact-link:focus-visible {
+    outline: 2px solid rgba(120, 160, 255, 0.75);
+    outline-offset: 2px;
+  }
+
+  .contact-avatar {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #1b2350, #131938);
+    border: 1px solid #2b3566;
+  }
+
+  .contact-info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #e9edff;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-name .contact-role {
+    font-size: 10px;
+    font-weight: 500;
+    color: #7f8ac4;
+    margin-left: 6px;
+    letter-spacing: 0.6px;
+  }
+
+  .contact-url {
+    font-size: 11px;
+    color: #8fa3f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .contact-arrow {
+    flex: 0 0 auto;
+    font-size: 15px;
+    font-weight: 700;
+    color: #6671a8;
+    transition: color 0.16s, transform 0.16s;
+  }
+
+  .contact-link:hover .contact-arrow {
+    color: #9db0ff;
+    transform: translate(2px, -2px);
+  }
+
+  .contact-foot {
+    margin-top: 9px;
+    padding: 0 2px;
+    font-size: 10.5px;
+    line-height: 1.6;
+    color: #565f8c;
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
+
   /* ==================== 响应式 ==================== */
   @media (max-width: 1024px) {
     #panel { flex: 0 0 348px; width: 348px; }
@@ -1523,6 +1749,9 @@
     .total-num { font-size: 23px; }
     .business-balance-num { font-size: 22px; }
     #bizChart { height: 60px; }
+    .contact-avatar { width: 32px; height: 32px; font-size: 16px; }
+    .contact-name { font-size: 13px; }
+    .contact-url { font-size: 10.5px; }
   }
 
   @media (max-height: 460px) and (orientation: landscape) {
@@ -1539,6 +1768,15 @@
 </style>
 </head>
 <body>
+
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-inner" id="introInner">
+    <div class="intro-by">Designed by</div>
+    <div class="intro-name">
+      <span class="intro-horizon">Horizon</span><span class="intro-studio">Studio</span>
+    </div>
+  </div>
+</div>
 
 <div id="app">
 
@@ -1664,6 +1902,28 @@
       </div>
     </div>
 
+    <div class="card contact-card" id="contactCard">
+      <div class="card-title">Contact the Author</div>
+      <a class="contact-link"
+         id="contactLink"
+         href="https://github.com/HorzionExpress"
+         target="_blank"
+         rel="noopener noreferrer"
+         role="link"
+         tabindex="0">
+        <span class="contact-avatar">🐙</span>
+        <span class="contact-info">
+          <span class="contact-name">
+            Lemuel Li
+            <span class="contact-role">Author</span>
+          </span>
+          <span class="contact-url">github.com/HorzionExpress</span>
+        </span>
+        <span class="contact-arrow">↗</span>
+      </a>
+      <div class="contact-foot">点击卡片访问 GitHub 主页</div>
+    </div>
+
   </aside>
 </div>
 
@@ -1698,7 +1958,7 @@
     <div class="guide-tip-head">
       <span class="guide-step-icon" id="guideIcon">🎆</span>
       <div class="guide-step-text">
-        <div class="guide-step-label" id="guideLabel">新手指导 · 1 / 9</div>
+        <div class="guide-step-label" id="guideLabel">新手指导 · 1 / 10</div>
         <div class="guide-step-title" id="guideTitle">欢迎</div>
       </div>
       <button class="guide-close" id="guideCloseBtn" type="button" aria-label="关闭引导">✕</button>
@@ -2344,6 +2604,50 @@ var business = {
 };
 
 var sceneCache = {};
+
+/* ============================================================
+   开场动画控制
+   ============================================================ */
+var INTRO_DURATION = 5000;   /* 与 CSS 中 introFade 的 5s 保持一致 */
+var introActive = true;
+
+var introOverlayEl = document.getElementById("introOverlay");
+var introInnerEl = document.getElementById("introInner");
+
+function finishIntro() {
+  if (!introActive) return;
+  introActive = false;
+
+  if (introOverlayEl && introOverlayEl.parentNode) {
+    introOverlayEl.parentNode.removeChild(introOverlayEl);
+  }
+  introOverlayEl = null;
+  introInnerEl = null;
+
+  maybeAutoStartGuide();
+}
+
+function startIntro() {
+  if (!introOverlayEl) {
+    introActive = false;
+    maybeAutoStartGuide();
+    return;
+  }
+
+  var ended = false;
+  var onEnd = function () {
+    if (ended) return;
+    ended = true;
+    finishIntro();
+  };
+
+  if (introInnerEl) {
+    introInnerEl.addEventListener("animationend", onEnd);
+  }
+
+  /* 兜底：即使动画事件因任何原因没有触发，也会准时结束开场 */
+  setTimeout(onEnd, INTRO_DURATION + 400);
+}
 
 /* ============================================================
    尺寸
@@ -7174,6 +7478,85 @@ var qualityToggleBtn = document.getElementById("qualityToggleBtn");
 var qualityIcon = document.getElementById("qualityIcon");
 var qualityValue = document.getElementById("qualityValue");
 
+/* ============================================================
+   联系作者卡片：确保链接一定可以点击打开
+   ------------------------------------------------------------
+   某些浏览器 / 环境下，直接点击 <a target="_blank"> 可能失效。
+   这里通过显式调用 window.open 来保证跳转：
+   - 若 window.open 成功，则阻止默认行为，避免打开两个标签页
+   - 若 window.open 被拦截，则让浏览器默认的 <a target="_blank"> 行为兜底
+   ============================================================ */
+var CONTACT_URL = "https://github.com/HorzionExpress";
+var contactLinkEl = document.getElementById("contactLink");
+
+function openContactUrl() {
+  var opened = null;
+  try {
+    opened = window.open(CONTACT_URL, "_blank");
+  } catch (errOpen) {
+    opened = null;
+  }
+
+  if (!opened) {
+    try {
+      opened = window.open(CONTACT_URL, "_blank", "noopener,noreferrer");
+    } catch (errOpen2) {
+      opened = null;
+    }
+  }
+
+  if (!opened) {
+    /* 最后兜底：直接修改当前页面 location（新标签页打开已经被拦截） */
+    try {
+      window.location.href = CONTACT_URL;
+    } catch (errLoc) {
+      /* 完全无法跳转，忽略 */
+    }
+  } else {
+    try { opened.focus(); } catch (errFocus) {}
+  }
+
+  return !!opened;
+}
+
+if (contactLinkEl) {
+  contactLinkEl.addEventListener("click", function (e) {
+    /* 阻止事件继续冒泡，避免被其它全局监听器干扰 */
+    e.stopPropagation();
+
+    var opened = openContactUrl();
+
+    if (opened) {
+      /* window.open 成功，阻止 <a> 默认行为，防止打开两个标签页 */
+      e.preventDefault();
+    }
+    /* 若打开失败，则让 <a target="_blank"> 默认行为继续兜底 */
+  });
+
+  /* 阻止 pointerdown 冒泡，避免与面板其它交互逻辑冲突 */
+  contactLinkEl.addEventListener("pointerdown", function (e) {
+    e.stopPropagation();
+  });
+
+  /* 触摸端的兼容处理：防止 user-select 干扰 */
+  contactLinkEl.addEventListener("touchstart", function (e) {
+    e.stopPropagation();
+  }, { passive: true });
+
+  /* 键盘可访问性：Enter / Space 触发点击 */
+  contactLinkEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " " || e.code === "Space") {
+      e.preventDefault();
+      e.stopPropagation();
+      var opened = openContactUrl();
+      if (!opened) {
+        /* 兜底：手动触发 click */
+        try { contactLinkEl.click(); } catch (errClick) {}
+      }
+    }
+  });
+}
+
 function buildSceneUI() {
   sceneBox.innerHTML = "";
   for (var i = 0; i < SCENES.length; i++) {
@@ -7620,6 +8003,7 @@ canvas.addEventListener("pointerdown", function (e) {
   audioEngine.init();
   audioEngine.resume();
 
+  if (introActive) return;
   if (state.paused) return;
   if (confirmOverlay.classList.contains("show")) return;
   if (milestoneOverlay.classList.contains("show")) return;
@@ -7634,6 +8018,12 @@ canvas.addEventListener("pointerdown", function (e) {
 canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); });
 
 window.addEventListener("keydown", function (e) {
+  /* 开场动画期间屏蔽一切快捷键 */
+  if (introActive) {
+    if (e.code === "Space" || e.key === "Escape") e.preventDefault();
+    return;
+  }
+
   /* 新手引导激活时优先处理键盘 */
   if (typeof guide !== "undefined" && guide && guide.active) {
     if (e.key === "Escape") {
@@ -7796,8 +8186,17 @@ function getGuideSteps() {
       icon: "🔊",
       title: "音效与画质",
       body: "可以随时开关音效（第一次需要点击一下页面才能激活浏览器音频），也可以在高清与流畅画质之间切换。",
-      note: "🎆 教程结束，去尽情放烟花吧！所有数字都只存在于屏幕上，你的钱包一分不少。",
+      note: "🔈 音效默认开启；如果你在安静环境里，可以直接静音。画质切换不影响燃放逻辑。",
       target: function () { return guideEl("soundToggleBtn"); },
+      place: "auto",
+      pad: 10
+    },
+    {
+      icon: "📮",
+      title: "联系作者 / 反馈建议",
+      body: "如果这个烟花模拟器让你玩得开心，或者你有任何建议、想法、Bug 反馈，欢迎点击底部的 <b>GitHub 卡片</b>，在 GitHub 上找到作者 <b>Lemuel Li</b>。",
+      note: "点击卡片会<b>新开一个标签页</b>，不会影响当前页面正在燃放的烟花。你的每一次 Star 与反馈，都是作者继续更新的动力 ⭐",
+      target: function () { return guideEl("contactLink"); },
       place: "auto",
       pad: 10
     }
@@ -8031,6 +8430,7 @@ function goToGuideStep(idx) {
 
 function startGuide(isAuto) {
   if (guide.active) return;
+  if (introActive) return;
 
   guide.steps = getGuideSteps();
   guide.index = 0;
@@ -8088,6 +8488,24 @@ function endGuide(completed) {
 
   if (completed) {
     showToast("新手指导结束 · 尽情放烟花吧 🎆", 2000, true);
+  }
+}
+
+/* 开场动画结束后，判断是否需要自动弹出新手引导 */
+function maybeAutoStartGuide() {
+  if (guide.active) return;
+
+  var guideSeen = false;
+  try {
+    guideSeen = localStorage.getItem(GUIDE_SEEN_KEY) === "1";
+  } catch (e) {
+    guideSeen = false;
+  }
+
+  if (!guideSeen) {
+    setTimeout(function () {
+      startGuide(true);
+    }, 320);
   }
 }
 
@@ -8176,19 +8594,8 @@ function boot() {
   /* 启动主循环 */
   requestAnimationFrame(loop);
 
-  /* 首次访问自动弹出新手指导 */
-  var guideSeen = false;
-  try {
-    guideSeen = localStorage.getItem(GUIDE_SEEN_KEY) === "1";
-  } catch (e) {
-    guideSeen = false;
-  }
-
-  if (!guideSeen) {
-    setTimeout(function () {
-      startGuide(true);
-    }, 450);
-  }
+  /* 播放开场动画，结束后再决定是否弹出新手指导 */
+  startIntro();
 }
 
 boot();
